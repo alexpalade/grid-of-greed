@@ -19,6 +19,10 @@ branches:
   only:
     - "/^v\\d+(\\.\\d+)+$/"
 
+cache:
+  directories:
+    - $HOME/Library/Caches/Homebrew
+
 os:
   - linux
   - osx
@@ -38,6 +42,7 @@ script:
     $GAMEKIT_SYSTEM_NAME $GAMEKIT_APPLICATION_PACKAGE $GAMEKIT_APPLICATION_MAIN_CLASS
     $TRAVIS_BUILD_DIR
     $GAMEKIT_BUILD_DIR
+
 before_deploy:
   - mv "$GAMEKIT_BUILD_DIR/$GAMEKIT_SYSTEM_NAME.zip" $GAMEKIT_TARGET_PACKAGE
 
