@@ -1,8 +1,8 @@
 # Grid of Greed
 
-A game for two (human) players.
-Capture all your opponents squares on the grid.
-The more squares you get, the faster you can capture.
+A game for 2 human players.
+Capture your opponents' squares.
+The more you get, the faster you can capture.
 
 Sorry about the lack of an AI, I ran out of time!
 
