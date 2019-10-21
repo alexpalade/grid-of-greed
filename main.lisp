@@ -14,7 +14,7 @@
    (state :initform :playing :accessor state)
    (countdown-start-time :accessor countdown-start-time)
    (score-bar
-    :initform (make-instance 'score-bar :height 10 :width 773 :origin (vec2 8 560))
+    :initform (make-instance 'score-bar :height 10 :width 771 :origin (vec2 8 560))
     :accessor score-bar))
 
   (:viewport-width *canvas-width*)
@@ -44,29 +44,29 @@
 
   (bind-button :escape :pressed #'gamekit:stop)
 
-  (bind-button :up :pressed (lambda () (move-player this (p1 this) :up)))
-  (bind-button :up :repeating (lambda () (move-player this (p1 this) :up)))
+  (bind-button :w :pressed (lambda () (move-player this (p1 this) :up)))
+  (bind-button :w :repeating (lambda () (move-player this (p1 this) :up)))
 
-  (bind-button :down :pressed (lambda () (move-player this (p1 this) :down)))
-  (bind-button :down :repeating (lambda () (move-player this (p1 this) :down)))
+  (bind-button :s :pressed (lambda () (move-player this (p1 this) :down)))
+  (bind-button :s :repeating (lambda () (move-player this (p1 this) :down)))
 
-  (bind-button :left :pressed (lambda () (move-player this (p1 this) :left)))
-  (bind-button :left :repeating (lambda () (move-player this (p1 this) :left)))
+  (bind-button :a :pressed (lambda () (move-player this (p1 this) :left)))
+  (bind-button :a :repeating (lambda () (move-player this (p1 this) :left)))
 
-  (bind-button :right :pressed (lambda () (move-player this (p1 this) :right)))
-  (bind-button :right :repeating (lambda () (move-player this (p1 this) :right)))
+  (bind-button :d :pressed (lambda () (move-player this (p1 this) :right)))
+  (bind-button :d :repeating (lambda () (move-player this (p1 this) :right))))
 
-  (bind-button :w :pressed (lambda () (move-player this (p2 this) :up)))
-  (bind-button :w :repeating (lambda () (move-player this (p2 this) :up)))
+  (bind-button :up :pressed (lambda () (move-player this (p2 this) :up)))
+  (bind-button :up :repeating (lambda () (move-player this (p2 this) :up)))
 
-  (bind-button :s :pressed (lambda () (move-player this (p2 this) :down)))
-  (bind-button :s :repeating (lambda () (move-player this (p2 this) :down)))
+  (bind-button :down :pressed (lambda () (move-player this (p2 this) :down)))
+  (bind-button :down :repeating (lambda () (move-player this (p2 this) :down)))
 
-  (bind-button :a :pressed (lambda () (move-player this (p2 this) :left)))
-  (bind-button :a :repeating (lambda () (move-player this (p2 this) :left)))
+  (bind-button :left :pressed (lambda () (move-player this (p2 this) :left)))
+  (bind-button :left :repeating (lambda () (move-player this (p2 this) :left)))
 
-  (bind-button :d :pressed (lambda () (move-player this (p2 this) :right)))
-  (bind-button :d :repeating (lambda () (move-player this (p2 this) :right))))
+  (bind-button :right :pressed (lambda () (move-player this (p2 this) :right)))
+  (bind-button :right :repeating (lambda () (move-player this (p2 this) :right)))
 
 (defmethod draw ((app gridgreed))
   (with-pushed-canvas ()
@@ -91,14 +91,14 @@
       (when (eql state :game-over)
         (let* ((winner (check-winning-condition app))
                (winner-name (name winner))
-               (message (format nil "~A is the winner" winner-name)))
+               (message (format nil "~A is the winner!" winner-name)))
         (multiple-value-bind (_ text-width) (calc-text-bounds message)
           (declare (ignore _))
-          (let ((text-pos-1 (vec2 255 310))
-                (text-pos-2 (vec2 255 290))
+          (let ((text-pos-1 (vec2 300 310))
+                (text-pos-2 (vec2 300 290))
                 (rect-width (+ text-width 60))
                 (rect-height 80)
-                (rect-origin (vec2 230 265))
+                (rect-origin (vec2 280 265))
                 (color (if (eql winner p1) *p1-color* *p2-color*)))
             (draw-rect rect-origin rect-width rect-height :fill-paint *white* :stroke-paint *black*)
             (draw-text message text-pos-1 :fill-color color)

@@ -57,11 +57,11 @@
             (let* ((color (color (owner cell)))
                   (strength (strength cell))
                   (alpha (/ (* 50 (log (+ 1 strength) 10)) 100)))
-;                   (alpha (+ 0.4 (* 4 (/ (strength cell) 800)))))
               (setf (w color) alpha)
               (draw-rect (vec2 x y) *cell-size* *cell-size* :stroke-paint color :fill-paint color)))
 
-          (draw-rect (vec2 x y) *cell-size* *cell-size* :stroke-paint *black*))))))
+          (draw-rect (vec2 x y) *cell-size* *cell-size* :stroke-paint nil))))
+    (draw-rect (vec2 8 10) (* (cols this) *cell-size*) (* (rows this) *cell-size*)  :stroke-paint *grid-color*)))
 
 (defmethod valid-cell-p ((grid grid) i j)
   (if (or
